@@ -18,6 +18,12 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("key", "Hi")
             startActivityForResult(intent, 777)
         }
+
+        // list activity
+        openListButton.setOnClickListener {
+            val intent = Intent(this, ListActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -30,12 +36,22 @@ class MainActivity : AppCompatActivity() {
 
 }
 
+
+/**
+ * TODO:
+ *
+ * - novou ListActivity
+ * - v layoutu jeden frame layout s id = "fragmentContainer"
+ *
+ */
+
 /*
 OBSAH
 
 //11.2.	JAVA. Seznámení s Android Studiem. Struktura projektu. Malé demo.
 //18.2.	Activity. Intent. Listener. Override. Toast. AlertDialog.
 25.2.	UI. View. ViewGroup. Layouts. Intent, ActivityResult
+(Fragment, LayoutInflater, Recycler?)
 4.3.	Intent. ActivityResult. RecyclerView.
 11.3.	Opakování RecyclerView
 18.3.	SharedPreferences. Fragment. DialogInterface.

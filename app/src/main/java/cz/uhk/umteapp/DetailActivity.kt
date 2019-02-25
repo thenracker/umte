@@ -23,7 +23,7 @@ class DetailActivity : AppCompatActivity() {
         Toast.makeText(this, sent, Toast.LENGTH_SHORT).show()
 
         confirmButton.setOnClickListener {
-            var builder = AlertDialog.Builder(this)
+            val builder = AlertDialog.Builder(this)
 
             builder.setTitle("Dialog")
             builder.setMessage("Opravdu chcete aktivitu ukončit?")
