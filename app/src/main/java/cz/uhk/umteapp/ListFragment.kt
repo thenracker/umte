@@ -36,9 +36,9 @@ class ListFragment : Fragment() {
 
     inner class Adapter : RecyclerView.Adapter<Adapter.Holder>() {
 
-        override fun onCreateViewHolder(p0: ViewGroup, p1: Int): Holder {
+        override fun onCreateViewHolder(root: ViewGroup, p1: Int): Holder {
             return Holder(LayoutInflater.from(context)
-                .inflate(R.layout.row_user, null))
+                .inflate(R.layout.row_user, root, false))
         }
 
         override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -49,13 +49,22 @@ class ListFragment : Fragment() {
             return list.size
         }
 
-        inner class Holder(val item: View) : RecyclerView.ViewHolder(item) {
+        inner class Holder(val item: View) : RecyclerView.ViewHolder(item),
+            View.OnClickListener {
+
+            init {
+                item.setOnClickListener(this)
+            }
 
             fun onBind() {
                 val textView = item.findViewById<TextView>(R.id.nameTextView)
                 val user = list[layoutPosition]
 
                 textView.text = user.name
+            }
+
+            override fun onClick(v: View?) {
+                // otevřít detail uživatele todo
             }
         }
     }
