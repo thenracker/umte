@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import cz.uhk.umteapp.prefs.Prefs
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +25,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ListActivity::class.java)
             startActivity(intent)
         }
+
+        val appStartMillis = Prefs.getAppStart()
+        Toast.makeText(this,
+            "$appStartMillis",
+            Toast.LENGTH_LONG).show()
+        Prefs.setAppStart(System.currentTimeMillis())
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -38,10 +45,24 @@ class MainActivity : AppCompatActivity() {
 
 
 /**
- * TODO:
+ * TODO
  *
- * - novou ListActivity
- * - v layoutu jeden frame layout s id = "fragmentContainer"
+ * - rozšířit User.kt o age, weight, lastname
+ * - v list activity onClick na řádek
+ * otevřít novou aktivitu s detailem
+ * - poslat data přes putSerializable -
+ * bude zapotřebí rozšířit = User : Serializable
+ * - v ní bude zobrazen detail Usera a
+ * možnost editace přes EditTexty
+ *
+ *
+ * Dnes
+ * - shared preferences
+ *
+ * Příště
+ * - dbflow
+ * - retrofit
+ *
  *
  */
 
