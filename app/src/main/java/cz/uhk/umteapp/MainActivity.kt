@@ -57,10 +57,9 @@ class MainActivity : AppCompatActivity() {
  *
  *
  * Dnes
- * - shared preferences
+ * - dbflow
  *
  * Příště
- * - dbflow
  * - retrofit
  *
  *

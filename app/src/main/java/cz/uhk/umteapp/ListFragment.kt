@@ -27,7 +27,7 @@ class ListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         addButton.setOnClickListener {
-            val user = User(editText.text.toString())
+            val user = User(editText.text.toString(), "", 0, 0)
             editText.setText("")
             list.add(user)
             adapter.notifyDataSetChanged()
