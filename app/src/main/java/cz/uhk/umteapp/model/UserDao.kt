@@ -4,7 +4,7 @@ import com.raizlabs.android.dbflow.sql.language.Select
 
 class UserDao {
 
-    fun createOrUpdate(user: UserDB){
+    fun createOrUpdate(user: UserDB) {
         user.save()
     }
 
@@ -12,13 +12,13 @@ class UserDao {
         user.delete()
     }
 
-    fun selectAll() : List<UserDB> {
+    fun selectAll(): List<UserDB> {
         return Select()
             .from(UserDB::class.java)
             .queryList()
     }
 
-    fun selectById(id: Int) : UserDB? {
+    fun selectById(id: Int): UserDB? {
         return Select()
             .from(UserDB::class.java)
             .where(UserDB_Table.id.eq(id))
