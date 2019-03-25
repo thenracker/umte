@@ -24,6 +24,8 @@
 
         <activity android:name=".ListActivity"/>
 
+        <service android:name=".services.RoomService" />
+
     </application>
 
 </manifest>

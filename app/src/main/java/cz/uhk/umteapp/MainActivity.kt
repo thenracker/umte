@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import cz.uhk.umteapp.prefs.Prefs
+import cz.uhk.umteapp.services.RoomService
 import cz.uhk.umteapp.ws.ScheduleDTO
 import cz.uhk.umteapp.ws.StagService
 import cz.uhk.umteapp.ws.stagService
@@ -33,25 +34,36 @@ class MainActivity : AppCompatActivity() {
         }
 
         val appStartMillis = Prefs.getAppStart()
-        Toast.makeText(this,
+        Toast.makeText(
+            this,
             "$appStartMillis",
-            Toast.LENGTH_LONG).show()
+            Toast.LENGTH_LONG
+        ).show()
         Prefs.setAppStart(System.currentTimeMillis())
 
 
         wsButton.setOnClickListener {
             val call = stagService.getHarmonogram(StagService.JSON)
-            call.enqueue(object: Callback<ScheduleDTO>{
+            call.enqueue(object : Callback<ScheduleDTO> {
                 override fun onResponse(call: Call<ScheduleDTO>, response: Response<ScheduleDTO>) {
                     println("onResponse")
-                    Toast.makeText(this@MainActivity,
+                    Toast.makeText(
+                        this@MainActivity,
                         response.body()?.toString(),
-                        Toast.LENGTH_LONG).show()
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
+
                 override fun onFailure(call: Call<ScheduleDTO>, t: Throwable) {
                     println("onFailure")
                 }
             })
+            startService(
+                Intent(
+                    this@MainActivity,
+                    RoomService::class.java
+                )
+            )
         }
     }
 
@@ -69,14 +81,9 @@ class MainActivity : AppCompatActivity() {
 /**
  * TODO
  *
- * Dnes
- * - retrofit
+ * Dnes 25.3. IntentService
  *
- * - napojení harmonogramu
- *
- * https://stagws.uhk.cz/
- *
- * - kalendar - getHarmonogramRoku
+ * 8. 4. - ODPADÁ
  *
  *
  */
