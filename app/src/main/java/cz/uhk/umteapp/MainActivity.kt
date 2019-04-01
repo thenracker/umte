@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import cz.uhk.umteapp.prefs.Prefs
+import cz.uhk.umteapp.sensors.SensorActivity
 import cz.uhk.umteapp.services.RoomService
 import cz.uhk.umteapp.ws.ScheduleDTO
 import cz.uhk.umteapp.ws.StagService
@@ -25,6 +26,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DetailActivity::class.java)
             intent.putExtra("key", "Hi")
             startActivityForResult(intent, 777)
+        }
+
+        sensorButton.setOnClickListener {
+            startActivity(Intent(this, SensorActivity::class.java))
         }
 
         // list activity
@@ -81,7 +86,8 @@ class MainActivity : AppCompatActivity() {
 /**
  * TODO
  *
- * Dnes 25.3. IntentService
+ * Dnes 1.4. Sensory, Spinner - ArrayAdapter, Enum,
+ * Extensions v Kt?
  *
  * 8. 4. - ODPADÁ
  *
